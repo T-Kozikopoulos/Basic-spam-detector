@@ -18,7 +18,7 @@ df = pd.concat(dfs)
 # Drop the useless columns.
 del df['COMMENT_ID'], df['AUTHOR'], df['DATE']
 
-# Aas per usual, assign X,y to features and columns respectively. A comment is spam when CLASS = 1.
+# As per usual, assign X,y to features and columns respectively.
 X = df['CONTENT']
 y = df['CLASS']
 
@@ -29,7 +29,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random
 # This is what the classifier will be using to distinguish between ham and spam.
 cv = TfidfVectorizer(min_df=1, stop_words='english')
 
-# Fit the count vectorizer, each word counts as a feature.
+# Fit the vectorizer, each word counts as a feature.
 X_traincv = cv.fit_transform(X_train)
 X_traincv = X_traincv.toarray()
 cv.inverse_transform(X_traincv[0])
